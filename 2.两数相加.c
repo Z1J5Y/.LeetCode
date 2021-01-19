@@ -65,8 +65,9 @@
  */
 
 
-struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2){
-
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2)
+{
+    
 }
 // @lc code=end
 
