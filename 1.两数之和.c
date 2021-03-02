@@ -20,12 +20,11 @@
  * 你可以按任意顺序返回答案。
  * 
  * 
- * 
  * 示例 1：
  * 
  * 
  * 输入：nums = [2,7,11,15], target = 9
- * 输出：[0,1]
+ * 输出：[0,1] 
  * 解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
  * 
  * 
@@ -64,7 +63,23 @@
  */
 int* twoSum(int* nums, int numsSize, int target, int* returnSize)
 {
-
+    int sign=0;
+    for(int i=0;i<numsSize-1;i++)
+    {
+        for(int j=i+1;j<numsSize;j++)
+        {
+            if(*(nums+i)+*(nums+j)==target)
+            {
+                int *m = (int *) malloc(2 * sizeof(int));
+                *m = i;
+                *(m + 1) = j;
+                *returnSize=2;
+                return m;
+            }
+        }
+    }
+    *returnSize=0;
+    return returnSize;
 }
 // @lc code=end
 
