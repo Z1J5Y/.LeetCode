@@ -49,7 +49,7 @@
  * 
  * 
  * 每个链表中的节点数在范围 [1, 100] 内
- * 0 
+ * 0 <= Node.val <= 9
  * 题目数据保证列表表示的数字不含前导零
  * 
  * 
@@ -68,6 +68,39 @@
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2)
 {
     
+    struct ListNode *ret=calloc(1,sizeof(struct ListNode)),*temp=NULL,*L=NULL;
+    long long la=0,lb=0,lc;
+    L=ret;
+    temp=l1;
+    for(long long i=1;temp!=NULL;i*=10,temp=temp->next)
+    {
+        la+=temp->val*i;
+        
+    }
+    
+    temp=l2;
+    for(long long i=1;temp!=NULL;i*=10,temp=temp->next)
+    {
+        lb+=temp->val*i;
+        
+    }
+    lc=la+lb;
+    if(!lc)
+    {
+        ret->val=0;
+        ret->next=NULL;
+        return ret;
+    }
+    for(;lc;)
+    {
+        temp=(struct ListNode *)calloc(1,sizeof(struct ListNode));
+        temp->val=lc%10;
+        L->next=temp;
+        L=temp;
+        lc/=10;
+    }
+    L->next=NULL;
+    return ret->next;
 }
 // @lc code=end
 
